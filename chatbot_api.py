@@ -50,13 +50,22 @@ def get_response(tag, intents_json):
 
 @app.route('/chatbot', methods=['POST'])
 def chatbot_response():
-    req_data = request.get_json()
-    message = req_data.get('message')
-    if message:
-        tag = predict_class(message)
-        response = get_response(tag, intents)
-        return jsonify({"response": response})
-    return jsonify({"response": "No message provided"}), 400
+    try:
+        req_data = request.get_json()
+        message = req_data.get('message')
+        if message:
+            tag = predict_class(message)
+            response = get_response(tag, intents)
+            return jsonify({"response": response}), 200, {'Content-Type': 'application/json; charset=utf-8'}
+        return jsonify({"response": "No message provided"}), 400, {'Content-Type': 'application/json; charset=utf-8'}
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500, {'Content-Type': 'application/json; charset=utf-8'}
 
 if __name__ == '__main__':
+    import sys
+    import io
+
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
+    
     app.run(debug=True)
