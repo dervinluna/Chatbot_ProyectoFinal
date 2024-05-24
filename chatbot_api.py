@@ -4,6 +4,7 @@ import pickle
 import numpy as np
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import uuid
 
 import nltk
 from nltk.stem import WordNetLemmatizer
@@ -14,11 +15,21 @@ app = Flask(__name__)
 CORS(app)  # Habilitar CORS para todas las rutas
 
 lemmatizer = WordNetLemmatizer()
-intents = json.loads(open('intents.json', encoding='utf-8').read())
+DATA_FILE = 'intents.json'
 
+# Cargar los datos iniciales
+intents = json.loads(open(DATA_FILE, encoding='utf-8').read())
 words = pickle.load(open('words.pkl', 'rb'))
 classes = pickle.load(open('classes.pkl', 'rb'))
 model = load_model('chatbot_model.h5')
+
+def read_data():
+    with open(DATA_FILE, 'r', encoding='utf-8') as file:
+        return json.load(file)
+
+def write_data(data):
+    with open(DATA_FILE, 'w', encoding='utf-8') as file:
+        json.dump(data, file, ensure_ascii=False, indent=4)
 
 def clean_up_sentence(sentence):
     sentence_words = nltk.word_tokenize(sentence)
@@ -60,6 +71,61 @@ def chatbot_response():
         return jsonify({"response": "No message provided"}), 400, {'Content-Type': 'application/json; charset=utf-8'}
     except Exception as e:
         return jsonify({"error": str(e)}), 500, {'Content-Type': 'application/json; charset=utf-8'}
+
+# Rutas CRUD para intents
+# GET /intents: Obtener todas las intenciones
+@app.route('/intents', methods=['GET'])
+def get_intents():
+    data = read_data()
+    return jsonify(data)
+
+# GET /intent/<tag>: Obtener una intención por su tag
+@app.route('/intent/<string:tag>', methods=['GET'])
+def get_intent(tag):
+    data = read_data()
+    intent = next((item for item in data['intents'] if item['tag'] == tag), None)
+    if intent is None:
+        return jsonify({"error": "Intent not found"}), 404
+    return jsonify(intent)
+
+# POST /intent: Crear una nueva intención
+@app.route('/intent', methods=['POST'])
+def create_intent():
+    data = read_data()
+    new_intent = request.get_json()
+
+    # Generar un UUID como tag
+    new_intent['tag'] = str(uuid.uuid4())
+    
+    if any(item['tag'] == new_intent['tag'] for item in data['intents']):
+        return jsonify({"error": "Intent with this tag already exists"}), 400
+    
+    data['intents'].append(new_intent)
+    write_data(data)
+    return jsonify(new_intent), 201
+
+# PUT /intent/<tag>: Actualizar una intención por su tag
+@app.route('/intent/<string:tag>', methods=['PUT'])
+def update_intent(tag):
+    data = read_data()
+    intent = next((item for item in data['intents'] if item['tag'] == tag), None)
+    if intent is None:
+        return jsonify({"error": "Intent not found"}), 404
+    update_data = request.get_json()
+    intent.update(update_data)
+    write_data(data)
+    return jsonify(intent)
+
+# DELETE /intent/<tag>: Eliminar una intención por su tag
+@app.route('/intent/<string:tag>', methods=['DELETE'])
+def delete_intent(tag):
+    data = read_data()
+    intent = next((item for item in data['intents'] if item['tag'] == tag), None)
+    if intent is None:
+        return jsonify({"error": "Intent not found"}), 404
+    data['intents'].remove(intent)
+    write_data(data)
+    return jsonify({"message": "Intent deleted"})
 
 if __name__ == '__main__':
     import sys

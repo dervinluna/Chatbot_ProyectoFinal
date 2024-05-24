@@ -1,118 +1,141 @@
 {
-  "intents": [
-    {
-      "tag": "saludo",
-      "patterns": [
-        "hola",
-        "buen dia"
-        
-      ],
-      "responses": [
-        "Hola!. Como puedo ayudarte Juan?"
-        
-      ]
-    },
-    {
-      "tag": "cursos1",
-      "patterns": [
-        "no aparece mi curso en Canvas, qué debo hacer"
-        
-        
-      ],
-      "responses": [
-        "Sí tu curso, no aparece en Canvas debes comunicarte con tu docente para que te asigne a dicho curso."
-        
-        
-      ]
-    },
-    {
-      "tag": "cursos2",
-      "patterns": [
-        "que cursos puedo llevar el siguiente semestre?"
-      ],
-      "responses":[
-        "Podrá llevar los cursos que tenga disponibles, para los cursos que no tienen prerrequisito únicamente debe cumplir con los créditos solicitados y para los cursos tienen prerrequisito debe de aprobar el curso anterior para poder llevarlo."
-      ]
-    },
-    {
-      "tag": "cursos3",
-      "patterns":[
-        "cuantos cursos puedo llevar en el semestre?"
-      ],
-      "responses":[
-        "5 cursos plan sábado/domingo y 1 en diferente sede"
-      ]
-    },
-    {
-      "tag":"cursos4",
-      "patterns":[
-        "cuantos puntos se necesitan para aprobar un curso?"
-      ],
-      "responses":[
-        "Para aprobar un curso son necesarios 61 puntos, según el pensum actual de ingeniería 2013-2014.Para aprobar un curso son necesarios 61 puntos, según el pensum actual de ingeniería 2013-2014."
-      ]
-    },
-    {
-      "tag": "inscripcion",
-      "patterns":[
-        "como realizo mi inscripcion?"
-      ],
-      "responses":[
-        "Si eres de primer ingreso debes de llevar tu papeleria: Fotostática de 5 X 7 de diploma o titulo de nivel medio. Fotocopia de diploma o titulo tamaño oficio (Debe presentar titulo original) 2 Fotografías tamaña cédula de estudio Certificación de cursos de nivel medio (Básicos y Diversificado) Fotocopia de DPI.) en una SEDE de la UMG."
-      ]
-    },
-    {
-      "tag":"graduacion",
-      "patterns":[
-        "cuales son los pasos para graduarme?"
-      ],
-      "responses":[
-        "Requisitos para autorización de tesis para graduación: Únicamente para alumnos con pensum cerrado y que tengan aprobado la evaluación privada en cualquiera de sus modalidades o bien 50% de las maestrías de autorizadas de sistemas (Nivel de ingles completo)."
-      ]
-    },
-    {
-      "tag": "extraordinario",
-      "patterns":[
-        "como hago un examen extraordinario?"
-      ],
-      "responses":[
-        "Para someterse a extraordinarios de 1er. y 2do. parcial recomendamos estar solventes y  no debe haber entregado o sometido al examen ordinario. Informar a su docente que desea examen extraordinario: 1) Pagar la boleta de pago de exámenes extraordinarios en línea o en bancos. 2) Carta de excusa válida, firmada y sellada por su coordinador."
-      ]
-    },
-    {
-      "tag":"sistema",
-      "patterns":[
-        "porque no veo mi nota en el sistema?"
-      ],
-      "responses":[
-       "Si usted no esta solvente, al consultar su nota en el sistema le aparecerá CERO. Al ponerse al día con los pagos, las multas y moras ya podrá ver su nota. Considerar cancelar antes del día 10 de cada mes para evitar que pagar  moras. Gracias.!!" 
-      ]
-    },
-    {
-      "tag": "cierre",
-      "patterns":[
-        "cual es el proceso de cierre"
-      ],
-      "responses":[
-        "Tener aprobado los 50 cursos del pensum, nivel de ingles aprobado y las 1,000 horas de prácticas aprobados."
-      ]
-    },
-    {
-      "tag":"proyecto",
-      "patterns":[
-        "como apruebo mi proyecto de graduacion"
-      ],
-      "responses":[
-        "Tenga aprobado la tesis y la demas propuestas de trabajo de graduación que cumpla con los requerimientos mínimos."
-      ]
-    },
-    {
-      "tag":"no_intent_found",
-      "patterns":[],
-      "responses":[
-        "Lo siento no entiendo tu mensaje. Puedes formularlo?"
-      ]
-    }
-
-  ]
+    "intents": [
+        {
+            "tag": "saludo",
+            "patterns": [
+                "hola",
+                "buen día"
+            ],
+            "responses": [
+                "¡Hola! ¿Cómo puedo ayudarte?"
+            ]
+        },
+        {
+            "tag": "cursos1",
+            "patterns": [
+                "no aparece mi curso en Canvas, qué debo hacer"
+            ],
+            "responses": [
+                "Sí tu curso, no aparece en Canvas debes comunicarte con tu docente para que te asigne a dicho curso."
+            ]
+        },
+        {
+            "tag": "cursos2",
+            "patterns": [
+                "que cursos puedo llevar el siguiente semestre?"
+            ],
+            "responses": [
+                "Podrá llevar los cursos que tenga disponibles, para los cursos que no tienen prerrequisito únicamente debe cumplir con los créditos solicitados y para los cursos tienen prerrequisito debe de aprobar el curso anterior para poder llevarlo."
+            ]
+        },
+        {
+            "tag": "cursos3",
+            "patterns": [
+                "cuantos cursos puedo llevar en el semestre?"
+            ],
+            "responses": [
+                "5 cursos plan sábado/domingo y 1 en diferente sede"
+            ]
+        },
+        {
+            "tag": "cursos4",
+            "patterns": [
+                "cuantos puntos se necesitan para aprobar un curso?"
+            ],
+            "responses": [
+                "Para aprobar un curso son necesarios 61 puntos, según el pensum actual de ingeniería 2013-2014.Para aprobar un curso son necesarios 61 puntos, según el pensum actual de ingeniería 2013-2014."
+            ]
+        },
+        {
+            "tag": "inscripcion",
+            "patterns": [
+                "como realizo mi inscripcion?"
+            ],
+            "responses": [
+                "Si eres de primer ingreso debes de llevar tu papeleria: Fotostática de 5 X 7 de diploma o titulo de nivel medio. Fotocopia de diploma o titulo tamaño oficio (Debe presentar titulo original) 2 Fotografías tamaña cédula de estudio Certificación de cursos de nivel medio (Básicos y Diversificado) Fotocopia de DPI.) en una SEDE de la UMG."
+            ]
+        },
+        {
+            "tag": "graduacion",
+            "patterns": [
+                "cuales son los pasos para graduarme?"
+            ],
+            "responses": [
+                "Requisitos para autorización de tesis para graduación: Únicamente para alumnos con pensum cerrado y que tengan aprobado la evaluación privada en cualquiera de sus modalidades o bien 50% de las maestrías de autorizadas de sistemas (Nivel de ingles completo)."
+            ]
+        },
+        {
+            "tag": "extraordinario",
+            "patterns": [
+                "como hago un examen extraordinario?"
+            ],
+            "responses": [
+                "Para someterse a extraordinarios de 1er. y 2do. parcial recomendamos estar solventes y  no debe haber entregado o sometido al examen ordinario. Informar a su docente que desea examen extraordinario: 1) Pagar la boleta de pago de exámenes extraordinarios en línea o en bancos. 2) Carta de excusa válida, firmada y sellada por su coordinador."
+            ]
+        },
+        {
+            "tag": "sistema",
+            "patterns": [
+                "porque no veo mi nota en el sistema?"
+            ],
+            "responses": [
+                "Si usted no esta solvente, al consultar su nota en el sistema le aparecerá CERO. Al ponerse al día con los pagos, las multas y moras ya podrá ver su nota. Considerar cancelar antes del día 10 de cada mes para evitar que pagar  moras. Gracias.!!"
+            ]
+        },
+        {
+            "tag": "cierre",
+            "patterns": [
+                "cual es el proceso de cierre"
+            ],
+            "responses": [
+                "Tener aprobado los 50 cursos del pensum, nivel de ingles aprobado y las 1,000 horas de prácticas aprobados."
+            ]
+        },
+        {
+            "tag": "proyecto",
+            "patterns": [
+                "como apruebo mi proyecto de graduacion"
+            ],
+            "responses": [
+                "Tenga aprobado la tesis y la demas propuestas de trabajo de graduación que cumpla con los requerimientos mínimos."
+            ]
+        },
+        {
+            "tag": "no_intent_found",
+            "patterns": [],
+            "responses": [
+                "Lo siento no entiendo tu mensaje. Puedes formularlo?"
+            ]
+        },
+        {
+            "tag": "nuevo_intent1",
+            "patterns": [
+                "nuevo",
+                "intento"
+            ],
+            "responses": [
+                "Nueva respuesta"
+            ]
+        },
+        {
+            "patterns": [
+                "nuevo",
+                "intento"
+            ],
+            "responses": [
+                "Nueva respuesta"
+            ],
+            "tag": "d1ed7e0c-69be-4b7c-9d5d-aed7c58c03e5"
+        },
+        {
+            "patterns": [
+                "nuevo",
+                "intento"
+            ],
+            "responses": [
+                "Nueva respuesta"
+            ],
+            "tag": "5a62cfd4-818f-4a90-bef5-eb94dc65a5f8"
+        }
+    ]
 }
