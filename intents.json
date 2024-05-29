@@ -127,6 +127,15 @@
             "responses": [
                 "7 cuadernos y 2 libros"
             ]
+        },
+        {
+            "tag": "alumnos33",
+            "patterns": [
+                "Cuanto Vale la ser estudiante "
+            ],
+            "responses": [
+                "Ser estudiante vale 500 Quetzales"
+            ]
         }
     ]
 }
