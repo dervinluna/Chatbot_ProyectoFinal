@@ -94,9 +94,9 @@ def create_intent():
     data = read_data()
     new_intent = request.get_json()
 
-    # Generar un UUID como tag
-    new_intent['tag'] = str(uuid.uuid4())
-    
+    if 'tag' not in new_intent or not new_intent['tag']:
+        return jsonify({"error": "Tag is required"}), 400
+
     if any(item['tag'] == new_intent['tag'] for item in data['intents']):
         return jsonify({"error": "Intent with this tag already exists"}), 400
     

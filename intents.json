@@ -85,7 +85,7 @@
         {
             "tag": "cierre",
             "patterns": [
-                "cual es el proceso de cierre"
+                "cual es el proceso de cierre 2"
             ],
             "responses": [
                 "Tener aprobado los 50 cursos del pensum, nivel de ingles aprobado y las 1,000 horas de prácticas aprobados."
@@ -101,41 +101,32 @@
             ]
         },
         {
-            "tag": "no_intent_found",
-            "patterns": [],
+            "tag": "inscripcion22",
+            "patterns": [
+                "Cuanto Vale la inscripcion ",
+                "inscripcion"
+            ],
             "responses": [
-                "Lo siento no entiendo tu mensaje. Puedes formularlo?"
+                "La inscripcion vale 500 Quetzales"
             ]
         },
         {
-            "tag": "nuevo_intent1",
+            "tag": "Equipo",
             "patterns": [
-                "nuevo",
-                "intento"
+                "Que computadora necesito para poder estudiar ingenieria?"
             ],
             "responses": [
-                "Nueva respuesta"
+                "No necesitas un equipo en especifico"
             ]
         },
         {
+            "tag": "Utiles",
             "patterns": [
-                "nuevo",
-                "intento"
+                "Cuantos cuadernos necesito llevar"
             ],
             "responses": [
-                "Nueva respuesta"
-            ],
-            "tag": "d1ed7e0c-69be-4b7c-9d5d-aed7c58c03e5"
-        },
-        {
-            "patterns": [
-                "nuevo",
-                "intento"
-            ],
-            "responses": [
-                "Nueva respuesta"
-            ],
-            "tag": "5a62cfd4-818f-4a90-bef5-eb94dc65a5f8"
+                "7 cuadernos y 2 libros"
+            ]
         }
     ]
 }
