@@ -4,7 +4,7 @@ import pickle
 import numpy as np
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import uuid
+import subprocess
 
 import nltk
 from nltk.stem import WordNetLemmatizer
@@ -30,6 +30,11 @@ def read_data():
 def write_data(data):
     with open(DATA_FILE, 'w', encoding='utf-8') as file:
         json.dump(data, file, ensure_ascii=False, indent=4)
+
+        # Ejecutar el script de entrenamiento
+def retrain_model():
+    result = subprocess.run(['python', 'training.py'], capture_output=True, text=True)
+    return result.stdout
 
 def clean_up_sentence(sentence):
     sentence_words = nltk.word_tokenize(sentence)
@@ -57,7 +62,7 @@ def get_response(tag, intents_json):
     for i in list_of_intents:
         if i['tag'] == tag:
             return random.choice(i['responses'])
-    return "You must ask the right questions"
+    return "Usted debe hacer las preguntas correctas"
 
 @app.route('/chatbot', methods=['POST'])
 def chatbot_response():
@@ -102,6 +107,7 @@ def create_intent():
     
     data['intents'].append(new_intent)
     write_data(data)
+    retrain_model()
     return jsonify(new_intent), 201
 
 # PUT /intent/<tag>: Actualizar una intención por su tag
@@ -114,6 +120,7 @@ def update_intent(tag):
     update_data = request.get_json()
     intent.update(update_data)
     write_data(data)
+    retrain_model()
     return jsonify(intent)
 
 # DELETE /intent/<tag>: Eliminar una intención por su tag
@@ -125,6 +132,7 @@ def delete_intent(tag):
         return jsonify({"error": "Intent not found"}), 404
     data['intents'].remove(intent)
     write_data(data)
+    retrain_model()
     return jsonify({"message": "Intent deleted"})
 
 if __name__ == '__main__':
